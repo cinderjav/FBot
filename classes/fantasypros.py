@@ -64,8 +64,12 @@ class FantasyPros:
         
         def _clean(player):
             pts = player.get('r2p_pts', 0)
-            player['r2p_pts'] = pts
+            player['r2p_pts'] = int(pts)
             player['player_yahoo_id'] = int(player['player_yahoo_id'].replace("1000", ""))
+            rank_ave = player.get('rank_ave', 0)
+            rank_std = player.get('rank_std', 0)
+            player['rank_ave'] = float(rank_ave)
+            player[rank_std] = float(rank_std)
                     
         for positions in data_dict:
             players = data_dict[positions]
