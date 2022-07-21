@@ -9,6 +9,8 @@ class PlayerFactory:
             players_at_positions = merged_data[position]
             for player in players_at_positions:
                 player_list.append(Player(player))
+
+            player_list.sort(key=lambda p : -p.proj_base_fpros_efficiency)
             position_player_dict[position] = player_list
             player_list = []
         return position_player_dict
@@ -37,4 +39,6 @@ class Player:
         self.projected_base_fpros = player['r2p_pts']
         self.grade = player['start_sit_grade']
         self.position_rank = player['pos_rank']
+        self.proj_base_fpros_efficiency = self.projected_base_fpros / self.salary
+        self.proj_base_yah_efficiency = self.projected_base_yahoo / self.salary
         
