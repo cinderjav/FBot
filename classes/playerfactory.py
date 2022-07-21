@@ -19,7 +19,7 @@ class Player:
         self.name = player['player_name']
         self.position = player['player_position_id']
         self.page_url = player['player_page_url']
-        self.opponent_id = player['player_opponent_id']
+        self.opponent_id = player.get('player_opponent_id', "")
         self.yahoo_id = player['player_yahoo_id']
         self.bye_week = player['player_bye_week']
         self.rank_average = player['rank_ave']
